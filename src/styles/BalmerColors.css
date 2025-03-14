@@ -1,0 +1,61 @@
+/* Tema Claro */
+:root {
+    --primary-color: #04bd65; /* Verde Primavera */
+    --primary-light: #68cf03; /* Verde Grama */
+    --primary-dark: #006400; /* Verde Escuro */
+
+    --secondary-color: #32CD32; /* Verde Lima */
+    --secondary-light: #98FB98; /* Verde Pálido */
+    --secondary-dark: #228B22; /* Verde Floresta */
+
+    --background-color: #F5FFFA; /* Branco Hortelã */
+    --background-alt: #E0EEE0; /* Verde Claro */
+    --surface-color: #FFFFFF; /* Branco para Superfícies */
+
+    --text-color: #2F4F4F; /* Cinza Ardósia Escuro */
+    --text-light: #556B2F; /* Verde Oliva Escuro */
+    --text-invert: #FFFFFF; /* Texto sobre fundos escuros */
+
+    --border-color: #8FBC8F; /* Verde Mar Suave */
+    --shadow-color: rgba(0, 100, 0, 0.2); /* Sombra Verde Escura */
+
+    --ring-color: #006e59;
+
+    --success-color: #3CB371; /* Verde Médio Marinho */
+    --warning-color: #FFD700; /* Dourado */
+    --error-color: #B22222; /* Vermelho Tijolo */
+
+    --button-hover: var(--primary-light);
+    --button-active: var(--primary-dark);
+}
+
+/* Tema Escuro */
+.dark {
+    --primary-color: #008000; /* Verde Escuro */
+    --primary-light: #006400; /* Verde Padrão */
+    --primary-dark: #004d00; /* Verde Mais Escuro */
+
+    --secondary-color: #ADFF2F; /* Verde Amarelo */
+    --secondary-light: #9ACD32; /* Amarelo Esverdeado */
+    --secondary-dark: #556B2F; /* Verde Oliva Escuro */
+
+    --background-color: #2F4F4F; /* Cinza Ardósia Escuro */
+    --background-alt: #0a5e52; /* Verde Médio Marinho */
+    --surface-color: #2a6c62; /* Verde Marinho */
+
+    --text-color: #F5FFFA; /* Branco Hortelã */
+    --text-light: #E0EEE0; /* Verde Claro */
+    --text-invert: #2F4F4F; /* Cinza Ardósia Escuro */
+
+    --border-color: #8FBC8F; /* Verde Mar Suave */
+    --shadow-color: rgba(0, 255, 127, 0.2); /* Sombra Verde Primavera */
+
+    --ring-color: #02efc4;
+
+    --success-color: #66CDAA; /* Verde Água Médio */
+    --warning-color: #FFA500; /* Laranja */
+    --error-color: #FF4500; /* Laranja Vermelho */
+
+    --button-hover: var(--primary-light);
+    --button-active: var(--primary-dark);
+}
