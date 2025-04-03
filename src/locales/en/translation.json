@@ -1,0 +1,21 @@
+{
+  "language": {
+    "selector": {
+      "label": "Language selector"
+    },
+    "en": "English",
+    "pt": "Portuguese"
+  },
+  "organization": "Organization",
+  "email": "Email",
+  "email_placeholder": "Enter your email",
+  "password": "Password",
+  "password_placeholder": "Enter your password",
+  "login_button": "Login",
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact",
+  "footer_rights": "© {{year}} Grupo Fricke. All rights reserved.",
+  "mail_daily_dash": "Daily Email Dashboard",
+  "sign_out": "Sign Out"
+}

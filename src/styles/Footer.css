@@ -1,0 +1,30 @@
+footer {
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.social-links a {
+  color: inherit;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+  /*color: var(--nav-link-hover);*/
+}
+
+.footer-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}

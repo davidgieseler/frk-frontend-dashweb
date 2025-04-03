@@ -1,0 +1,6 @@
+SELECT *
+FROM adempiere.AD_User
+WHERE email = 'lima@fricke.com.br'
+ AND isActive = 'Y'
+ AND AD_Client_ID = 2000000
+ AND password IS NOT NULL

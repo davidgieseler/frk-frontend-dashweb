@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
+import { useGlobalContext } from "../context/Context";
 
 const ThemeToggleButton = () => {
-  // Obtém o tema do localStorage ou define "light" como padrão
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    return (localStorage.getItem("theme") as "light" | "dark") || "light";
-  });
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme); // Salva a escolha do usuário
-  }, [theme]);
+  const { theme, setTheme } = useGlobalContext();
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -27,9 +15,7 @@ const ThemeToggleButton = () => {
     >
       {/* Faixa de fundo */}
       <div
-        className={`w-16 h-8 ${
-          theme === "dark" ? "bg-gray-500" : "bg-gray-100"
-        } rounded-full`}
+        className={`w-16 h-8 ${theme === "dark" ? "bg-gray-500" : "bg-gray-100"} rounded-full`}
       ></div>
 
       {/* Indicador (bolinha) com ícone interno */}

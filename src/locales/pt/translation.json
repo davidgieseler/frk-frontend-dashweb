@@ -1,0 +1,21 @@
+{
+  "language": {
+    "selector": {
+      "label": "Seletor de idioma"
+    },
+    "en": "Inglês",
+    "pt": "Português"
+  },
+  "organization": "Organização",
+  "email": "E-mail",
+  "email_placeholder": "Digite seu e-mail",
+  "password": "Senha",
+  "password_placeholder": "Digite sua senha",
+  "login_button": "Entrar",
+  "home": "Início",
+  "about": "Sobre",
+  "contact": "Contato",
+  "footer_rights": "© {{year}} Grupo Fricke. Todos os direitos reservados.",
+  "mail_daily_dash": "Dashboard Diário do E-mail",
+  "sign_out": "Sair"
+}
