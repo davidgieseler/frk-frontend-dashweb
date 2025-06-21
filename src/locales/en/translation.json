@@ -17,5 +17,6 @@
   "contact": "Contact",
   "footer_rights": "© {{year}} Grupo Fricke. All rights reserved.",
   "mail_daily_dash": "Daily Email Dashboard",
-  "sign_out": "Sign Out"
+  "sign_out": "Sign Out",
+  "reset_zoom": "Reset Zoom"
 }

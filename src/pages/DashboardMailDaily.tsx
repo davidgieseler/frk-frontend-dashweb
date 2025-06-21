@@ -209,7 +209,7 @@ export const DashboardMailDaily = () => {
               <button
                 onClick={() => setZoom(1)}
                 className="p-2 rounded-full shadow cursor-pointer"
-                title="Resetar Zoom"
+                title={t("reset_zoom")}
               >
                 <FaHandPaper
                   size={20}
