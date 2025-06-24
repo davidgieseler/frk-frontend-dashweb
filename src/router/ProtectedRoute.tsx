@@ -1,29 +1,33 @@
-import { ReactNode, FC } from 'react'; // 1. Importe os tipos necessários
+import {FC, useContext} from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import UIContext from "../context/UIContext.tsx"; // Precisamos do useUI para checar as permissões
 
-// 2. Defina a interface para as props do componente
 interface ProtectedRouteProps {
-    children: ReactNode;
+    requiredHref: string;
+    children: React.ReactNode;
 }
 
-// 3. Aplique a tipagem ao seu componente usando React.FC
-const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-    const { isAuthenticated, loading } = useAuth();
+const ProtectedRoute: FC<ProtectedRouteProps> = ({ requiredHref, children }) => {
+    const { isAuthenticated, loading: authLoading } = useAuth();
+    const ui = useContext(UIContext);
     const location = useLocation();
 
-    if (loading) {
-        // Mostra um spinner ou tela de carregamento enquanto valida o token
-        return <div>Carregando...</div>;
-    }
+    if (authLoading || ui?.loading) return <div>Carregando permissões...</div>;
+
+    const accessAllowed = ui?.uiObjects?.some(
+        (obj) => obj.type === "MENU" && obj.metadata?.href === requiredHref
+    );
 
     if (!isAuthenticated) {
-        // Redireciona para a página de login se não estiver autenticado
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-    // Agora o TypeScript sabe que 'children' é um ReactNode válido para ser retornado
-    return children;
+    if (!accessAllowed) {
+        return <Navigate to="/403" replace />;
+    }
+
+    return <>{children}</>;
 };
 
 export default ProtectedRoute;

@@ -1,15 +1,25 @@
-// src/hooks/useUI.ts
+import { useEffect, useState } from "react";
+import axios from "../api/axios";
+import { AccessObject } from "../interfaces/api";
 
-import { useContext } from 'react';
-import UIContext from '../context/UIContext'; // Verifique o caminho
+export const useUI = () => {
+    const [accessObjects, setAccessObjects] = useState<AccessObject[]>([]);
+    const [loading, setLoading] = useState(true);
 
-const useUI = () => {
-    const context = useContext(UIContext);
-    if (!context) {
-        // Este erro acontece se você tentar usar o hook fora do UIProvider.
-        throw new Error('useUI deve ser usado dentro de um UIProvider');
-    }
-    return context;
+    useEffect(() => {
+        const fetchAccessObjects = async () => {
+            try {
+                const response = await axios.get("/ui/access-objects/");
+                setAccessObjects(response.data);
+            } catch (error) {
+                console.error("Erro ao buscar access-objects", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAccessObjects();
+    }, []);
+
+    return { accessObjects, loading };
 };
-
-export default useUI;

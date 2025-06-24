@@ -1,6 +1,10 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import apiClient from '../api/axios';
 import { LoginStep1Response, AuthTokens } from '../interfaces/api';
+import { useNavigate } from "react-router-dom";
+
+import {useGlobalContext} from "../context/Context.tsx";
+import {organizations} from "../data/Organizations.ts";
 
 // 1. Definir a interface para o valor do contexto
 interface AuthContextType {
@@ -21,6 +25,8 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(true);
+    const navigate = useNavigate();
+    const { setOrganization } = useGlobalContext();
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
@@ -50,7 +56,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
+        setOrganization("None" as keyof typeof organizations)
+        // localStorage.setItem('selectedOrganization', 'None')
+        // localStorage.removeItem('selectedOrganization');
         setIsAuthenticated(false);
+
+        setTimeout(() => {
+            navigate("/login");
+        }, 0);
     };
 
     const authContextValue: AuthContextType = {

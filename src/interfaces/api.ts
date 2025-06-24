@@ -20,7 +20,7 @@ export interface AuthTokens {
 export interface AccessObject {
     id: number;
     name: string;
-    type: 'MENU' | 'BUTTON' | 'TAB' | string; // Usamos um tipo união para os valores conhecidos
+    type: 'MENU' | 'COMPONENT' | 'BUTTON' | 'TAB' | string; // Usamos um tipo união para os valores conhecidos
     metadata: {
         href?: string;
         icon?: string;

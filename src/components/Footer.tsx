@@ -20,7 +20,7 @@ const Footer = () => {
             <FaLinkedin />
           </a>
           <a
-            href={t("mailto")}
+            href={t("footer_mailto")}
             className="transition duration-200 hover:scale-110 hover:text-[var(--primary-color)]"
           >
             <FaEnvelope />

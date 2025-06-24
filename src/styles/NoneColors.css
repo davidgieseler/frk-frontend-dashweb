@@ -1,0 +1,61 @@
+/* Tema Claro */
+:root {
+    --primary-color: #888888;       /* Cinza Médio */
+    --primary-light: #AAAAAA;       /* Cinza Claro */
+    --primary-dark: #555555;        /* Cinza Escuro */
+
+    --secondary-color: #B0BEC5;     /* Azul Acinzentado */
+    --secondary-light: #CFD8DC;     /* Azul Nevoado Claro */
+    --secondary-dark: #90A4AE;      /* Azul Nevoado Escuro */
+
+    --background-color: #F4F4F4;    /* Cinza Muito Claro */
+    --background-alt: #E0E0E0;      /* Cinza Claro */
+    --surface-color: #FFFFFF;       /* Branco para Cartões */
+
+    --text-color: #333333;          /* Quase Preto */
+    --text-light: #666666;          /* Cinza Médio */
+    --text-invert: #FFFFFF;         /* Texto sobre fundo escuro */
+
+    --border-color: #CCCCCC;        /* Cinza para bordas */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra leve */
+
+    --ring-color: #888888;
+
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --error-color: #F44336;
+
+    --button-hover: var(--primary-light);
+    --button-active: var(--primary-dark);
+}
+
+/* Tema Escuro */
+.dark {
+    --primary-color: #999999;
+    --primary-light: #BBBBBB;
+    --primary-dark: #666666;
+
+    --secondary-color: #78909C;
+    --secondary-light: #90A4AE;
+    --secondary-dark: #546E7A;
+
+    --background-color: #1E1E1E;
+    --background-alt: #2C2C2C;
+    --surface-color: #2A2A2A;
+
+    --text-color: #EEEEEE;
+    --text-light: #BBBBBB;
+    --text-invert: #1E1E1E;
+
+    --border-color: #444444;
+    --shadow-color: rgba(255, 255, 255, 0.05);
+
+    --ring-color: #777777;
+
+    --success-color: #66BB6A;
+    --warning-color: #FFB74D;
+    --error-color: #E57373;
+
+    --button-hover: var(--primary-light);
+    --button-active: var(--primary-dark);
+}

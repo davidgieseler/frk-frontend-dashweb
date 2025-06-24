@@ -13,7 +13,7 @@ import useAuth from '../hooks/useAuth';
 import { AccessObject } from '../interfaces/api';
 
 // A "forma" do nosso contexto
-interface UIContextType {
+export interface UIContextType {
     uiObjects: AccessObject[];
     loading: boolean;
     hasAccess: (objectName: string) => boolean;

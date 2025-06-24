@@ -8,11 +8,14 @@ import { LoginStep1Response } from "../interfaces/api"; // A interface que defin
 
 // --- Imagem de Logo Padrão (Opcional) ---
 // Como na primeira etapa não sabemos a organização, podemos ter um logo padrão.
-import defaultLogo from '../assets/react.svg'; // Crie ou ajuste este caminho
+import {useGlobalContext} from "../context/Context.tsx";
+import { organizations } from "../data/Organizations";
+
 
 const LoginPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { organization, setOrganization } = useGlobalContext();
 
   // 1. Usando nosso novo hook de autenticação
   const auth = useAuth();
@@ -47,7 +50,7 @@ const LoginPage: React.FC = () => {
   };
 
   // 4. Nova função para a segunda etapa do login
-  const handleOrgSelect = async (organizationId: number) => {
+  const handleOrgSelect = async (organizationId: number, organizationName: string) => {
     if (!loginData) return; // Segurança
     setError("");
     setLoading(true);
@@ -55,7 +58,8 @@ const LoginPage: React.FC = () => {
     try {
       // Chama a segunda etapa para obter os tokens
       await auth.loginStep2(loginData.user_id, organizationId);
-      navigate("/mail_daily_dash"); // Redireciona para o dashboard após o sucesso
+      navigate("/home"); // Redireciona para o dashboard após o sucesso
+      setOrganization(organizationName.replace(/\s+/g, '_') as keyof typeof organizations)
     } catch (err) {
       setError("Não foi possível entrar na organização selecionada.");
       console.error(err);
@@ -71,7 +75,7 @@ const LoginPage: React.FC = () => {
         {step === 1 && (
             <>
               <div className="mb-6 text-center">
-                <img src={defaultLogo} alt="Logo" className="h-16 mx-auto dark:brightness-150" />
+                <img src={organization.logo} alt="Logo" className="h-16 mx-auto dark:brightness-150" />
               </div>
               <form onSubmit={handleLoginSubmit} noValidate>
                 {/* Campo de username (ajustado de email) */}
@@ -84,7 +88,7 @@ const LoginPage: React.FC = () => {
                       id="username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder={t("username_placeholder")}
+                      placeholder={t("username")}
                       className="w-full px-4 py-2 border border-[var(--primary-color)] bg-[var(--background-alt)] text-[var(--text-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                       required
                   />
@@ -125,7 +129,7 @@ const LoginPage: React.FC = () => {
                 {loginData.organizations.map((org) => (
                     <button
                         key={org.id}
-                        onClick={() => handleOrgSelect(org.id)}
+                        onClick={() => handleOrgSelect(org.id, org.name)}
                         disabled={loading}
                         className="w-full bg-[var(--surface-alt)] border border-[var(--primary-color)] text-[var(--text-color)] py-3 rounded-lg hover:bg-[var(--primary-color)] hover:text-[var(--text-invert)] transition duration-200 cursor-pointer disabled:opacity-50"
                     >

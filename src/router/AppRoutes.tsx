@@ -12,6 +12,9 @@ import { DashboardMailDaily } from "../pages/DashboardMailDaily";
 import { AuthProvider } from '../context/AuthContext';
 import { UIProvider } from '../context/UIContext';
 import useAuth from "../hooks/useAuth";
+import RedirectIfAuth from './RedirectIfAuth';
+import ProtectedRoute from "./ProtectedRoute.tsx";
+import UnauthorizedPage from "../pages/UnauthorizedPage.tsx";
 
 // ===================================================================
 // 1. Layouts (como você já tinha, sem alterações)
@@ -71,29 +74,51 @@ const ProtectedLayout = () => {
 // ===================================================================
 const AppRoutes = () => (
     <BrowserRouter>
-        {/* O AuthProvider deve envolver toda a aplicação */}
         <AuthProvider>
             <Routes>
                 {/* GRUPO 1: Rotas de Autenticação (Layout sem Navbar) */}
                 <Route element={<AuthLayout />}>
-                    <Route path="/" element={<LoginPage />} />
+                    <Route
+                        path="/"
+                        element={
+                            // 2. Aplicamos o guardião na rota de login
+                            <RedirectIfAuth>
+                                <LoginPage />
+                            </RedirectIfAuth>
+                        }
+                    />
+                    <Route
+                        path="/login"
+                        element={
+                            // 2. Aplicamos o guardião na rota de login
+                            <RedirectIfAuth>
+                                <LoginPage />
+                            </RedirectIfAuth>
+                        }
+                    />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
 
                 {/* GRUPO 2: Rotas Públicas (Layout com Navbar) */}
                 <Route element={<DefaultLayout />}>
-                    <Route path="/login" element={<LoginPage />} />
+                    {/* 3. CORREÇÃO: Removida a rota duplicada para /login daqui */}
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/403" element={<UnauthorizedPage />} />
                 </Route>
 
                 {/* GRUPO 3: Rotas Protegidas (Passam pelo porteiro 'ProtectedLayout') */}
                 <Route element={<ProtectedLayout />}>
-                    {/* Após passar pelo porteiro, usamos o DefaultLayout para ter a Navbar */}
                     <Route element={<DefaultLayout />}>
                         <Route path="/home" element={<HomePage />} />
-                        <Route path="/mail_daily_dash" element={<DashboardMailDaily />} />
-                        {/* Adicione outras rotas protegidas aqui. Ex: */}
-                        {/* <Route path="/users" element={<UsersPage />} /> */}
+                        <Route
+                            path="/dashboard_email"
+                            element={
+                                <ProtectedRoute requiredHref="/dashboard_email">
+                                    <DashboardMailDaily />
+                                </ProtectedRoute>
+                            }
+                        />
+                        {/* Adicione outras rotas protegidas aqui */}
                     </Route>
                 </Route>
 

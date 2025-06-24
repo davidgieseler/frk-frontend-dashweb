@@ -9,6 +9,7 @@
   "organization": "Organization",
   "email": "Email",
   "email_placeholder": "Enter your email",
+  "username": "Username",
   "password": "Password",
   "password_placeholder": "Enter your password",
   "login_button": "Login",
@@ -18,5 +19,9 @@
   "footer_rights": "© {{year}} Grupo Fricke. All rights reserved.",
   "mail_daily_dash": "Daily Email Dashboard",
   "sign_out": "Sign Out",
-  "reset_zoom": "Reset Zoom"
+  "reset_zoom": "Reset Zoom",
+  "footer_mailto": "mailto",
+  "loading": "Loading",
+  "loading_button": "loading_button",
+  "select_organization": "Select Organization"
 }

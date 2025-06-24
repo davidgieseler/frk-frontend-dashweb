@@ -7,7 +7,7 @@ import "./i18n";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <GlobalProvider initialOrganization="Balmer" initialTheme="dark">
+    <GlobalProvider initialOrganization="None" initialTheme="light">
       <App />
     </GlobalProvider>
   </StrictMode>,
